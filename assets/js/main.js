@@ -1,11 +1,6 @@
-// Arquivo: main.js
-
 import { rotas } from './rotas.js';
 import { salvarDadosUsuario, restaurarDadosUsuario } from './storage.js';
 
-/* =========================================================
-   MOTOR DO ROUTER SPA
-========================================================= */
 const app = document.getElementById('app');
 
 function renderizarPagina() {
@@ -20,15 +15,10 @@ function renderizarPagina() {
 window.addEventListener('hashchange', renderizarPagina);
 window.addEventListener('load', renderizarPagina);
 
-/* =========================================================
-   EVENTOS GLOBAIS (Delegação de Eventos)
-========================================================= */
-// Menu Hambúrguer 
 document.getElementById('btn-menu').addEventListener('click', () => {
     document.getElementById('nav-menu').classList.toggle('ativo');
 });
 
-// Delegação para elementos injetados dinamicamente (Modal e Toast)
 document.body.addEventListener('click', (evento) => {
     if (evento.target.id === 'btn-abrir-modal') {
         evento.preventDefault();
@@ -42,7 +32,7 @@ document.body.addEventListener('click', (evento) => {
 
 document.body.addEventListener('submit', (evento) => {
     if (evento.target.id === 'form-cadastro') {
-        evento.preventDefault(); // Impede a página de recarregar
+        evento.preventDefault(); 
         
         const dadosUsuario = {
             nome: document.getElementById('nome').value,
@@ -56,10 +46,8 @@ document.body.addEventListener('submit', (evento) => {
             estado: document.getElementById('estado').value
         };
 
-        // Chama a função importada do storage.js para salvar os dados
         salvarDadosUsuario(dadosUsuario);
 
-        // Feedback visual
         const toast = document.getElementById('toast-sucesso');
         toast.classList.add('ativo');
         setTimeout(() => toast.classList.remove('ativo'), 3000);

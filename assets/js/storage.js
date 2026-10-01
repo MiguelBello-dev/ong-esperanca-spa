@@ -1,5 +1,3 @@
-// Arquivo: storage.js
-
 export function salvarDadosUsuario(dados) {
     localStorage.setItem('dadosCadastroONG', JSON.stringify(dados));
 }

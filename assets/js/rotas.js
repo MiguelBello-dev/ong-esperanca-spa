@@ -1,5 +1,3 @@
-// Arquivo: rotas.js
-
 export const rotas = {
     '#/': `
         <img src="../assets/img/todos-juntos.png" alt="Pessoas se abraçando" class="banner-topo">
