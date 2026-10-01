@@ -354,3 +354,26 @@ input:focus, select:focus {
     90% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; transform: translateY(20px); }
 }
+
+:root {
+    --cor-fundo: #ffffff;
+    --cor-texto: #333333;
+    --cor-primaria: #0056b3;
+    --cor-fundo-secao: #f4f4f4;
+    --cor-borda: #dddddd;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-fundo: #121212;
+        --cor-texto: #e0e0e0;
+        --cor-primaria: #4da3ff; 
+        --cor-fundo-secao: #1e1e1e;
+        --cor-borda: #333333;
+    }
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
