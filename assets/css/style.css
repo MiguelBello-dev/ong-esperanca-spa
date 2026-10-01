@@ -1,0 +1,397 @@
+/* =========================================================
+   1. GLOBAIS E TIPOGRAFIA
+========================================================= */
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+p {
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+ul {
+    margin-bottom: 24px;
+    padding-left: 20px;
+}
+
+.th1 {
+    color: #ff0000;
+    margin-bottom: 24px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.th2 {
+    color: #0000FF;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.th3 {
+    color: #ffae00;
+    margin-bottom: 12px;
+}
+
+figcaption {
+    font-style: italic;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* =========================================================
+   2. FORMULÁRIOS
+========================================================= */
+fieldset {
+    padding: 24px;
+    margin-bottom: 32px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff; /* Fundo branco para destacar */
+}
+
+/* Transforma o container em coluna para colocar o texto em cima da caixa */
+fieldset div {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; 
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Faz os campos ocuparem 100% do espaço disponível */
+input, select {
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 12px; /* Aumenta a área de clique */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+    margin-left: 0; /* Remove recuos antigos */
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao clicar no campo para digitar */
+input:focus, select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+    outline: none;
+}
+
+/* =========================================================
+   3. IMAGENS
+========================================================= */
+.img-responsiva {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.banner-topo {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================================
+   4. SISTEMA DE GRID (BASE MOBILE)
+========================================================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 50px;
+    box-sizing: border-box;
+}
+
+.col-span-12 {
+    grid-column: span 12;
+}
+
+/* =========================================================
+   5. CABEÇALHO E NAVEGAÇÃO (HAMBÚRGUER UNIVERSAL)
+========================================================= */
+.cabecalho-principal {
+    display: flex;
+    align-items: center; 
+    padding: 15px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Mantém o menu ancorado ao cabeçalho */
+}
+
+/* CORREÇÃO 1: O margin-left: auto empurra o botão para a extrema direita */
+.menu-hamburguer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto; 
+}
+
+.menu-hamburguer .linha {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+}
+
+/* Container do menu: Sai do fluxo para não atrapalhar o alinhamento do botão */
+.menu-navegacao {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+}
+
+.menu-navegacao ul {
+    display: none; 
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+}
+
+.menu-navegacao ul li a {
+    display: block;
+    padding: 12px 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-navegacao.ativo ul {
+    display: flex;
+}
+
+/* CORREÇÃO 2: Configuração do Submenu para empurrar o "Cadastro" para baixo */
+.item-dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none; 
+    flex-direction: column;
+    padding-left: 20px; /* Recuo para mostrar que é um submenu */
+    margin-top: 0;
+    background-color: #f9f9f9;
+    position: static; /* Impede que flutue por cima dos outros botões */
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.submenu li a {
+    font-weight: normal; /* Tira o negrito para diferenciar do link principal */
+    font-size: 0.9em;
+    border-bottom: none; /* Tira a linha divisória do submenu */
+    padding: 8px 0;
+}
+
+.item-dropdown:hover .submenu {
+    display: flex;
+}
+
+/* =========================================================
+   6. MEDIA QUERIES (COMPORTAMENTO RESPONSIVO)
+========================================================= */
+
+/* --- AJUSTES DO MENU ABERTO (MOBILE VS DESKTOP) --- */
+@media (max-width: 768px) {
+    .menu-navegacao ul {
+        width: 100%; 
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-navegacao ul {
+        width: 300px; /* Largura fixa para a caixa do menu no PC */
+        margin-left: auto; /* Alinha a caixa à direita */
+        border-radius: 0 0 8px 8px; /* Arredonda só as pontas de baixo */
+        margin-right: 50px; /* Alinha com o botão hambúrguer */
+    }
+    
+    .menu-hamburguer .linha {
+        width: 35px;
+        height: 4px;
+    }
+}
+
+/* --- OS 5 CENÁRIOS DO GRID --- */
+
+/* Cenário 1: Até 480px (Extra Small) */
+@media (max-width: 480px) {
+    .cabecalho-principal {
+        padding: 15px 20px;
+    }
+    .grid-container {
+        padding: 16px 20px;
+        gap: 16px;
+    }
+}
+
+/* Cenário 2: De 481px a 768px (Small) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .grid-container {
+        padding: 20px 30px;
+        gap: 20px;
+    }
+    .md-span-6 {
+        grid-column: span 6;
+    }
+}
+
+/* Cenário 3: De 769px a 1024px (Medium) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid-container {
+        padding: 24px 40px;
+        gap: 24px;
+    }
+    .md-span-6 { grid-column: span 6; }
+    .lg-span-8 { grid-column: span 8; }
+    .lg-span-4 { grid-column: span 4; }
+}
+
+/* Cenário 4: De 1025px a 1440px (Large) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .grid-container {
+        max-width: 1200px;
+        gap: 32px;
+    }
+    .md-span-6 { grid-column: span 6; }
+    .lg-span-8 { grid-column: span 8; }
+    .lg-span-4 { grid-column: span 4; }
+}
+
+/* Cenário 5: Acima de 1441px (Extra Large) */
+@media (min-width: 1441px) {
+    .grid-container {
+        max-width: 1400px;
+        gap: 40px;
+        padding: 40px 0;
+    }
+    .md-span-6 { grid-column: span 6; }
+    .lg-span-8 { grid-column: span 8; }
+    .lg-span-4 { grid-column: span 4; }
+    .lg-span-10 { grid-column: span 10; }
+    .lg-offset-1 { grid-column-start: 2; }
+}
+
+/* =========================================================
+   7. COMPONENTES DE FEEDBACK VISUAL (Badges, Alertas, Modal, Toast)
+========================================================= */
+
+/* --- BADGES (Etiquetas) --- */
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65em;
+    font-weight: bold;
+    display: inline-block;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.badge-sucesso { background-color: #28a745; }
+.badge-aviso { background-color: #ffc107; color: #333; }
+
+/* --- ALERTAS (Mensagens de Formulário) --- */
+.alerta {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 0.95em;
+    border-left: 5px solid; 
+}
+.alerta-info {
+    background-color: #e2eefd;
+    color: #004085;
+    border-color: #0056b3;
+}
+
+/* --- MODAL (Caixa de Confirmação Oculta por Padrão) --- */
+.modal-overlay {
+    display: none; /* Escondido até o botão ser clicado */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+.modal-overlay.ativo {
+    display: flex; /* Classe que o JS vai usar para mostrar o modal */
+}
+.modal-conteudo {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 400px;
+    text-align: center;
+}
+.modal-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+.btn-confirmar, .btn-cancelar, .btn-doar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-confirmar, .btn-doar { background-color: #0056b3; color: white; }
+.btn-cancelar { background-color: #e0e0e0; color: #333; }
+
+.btn-confirmar:hover, .btn-doar:hover { background-color: #004494; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+.btn-cancelar:hover { background-color: #cccccc; }
+
+/* --- TOAST (Notificação Rápida) --- */
+.toast-notificacao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 2000;
+}
+.toast-notificacao.ativo {
+    display: block;
+    animation: fadeInOut 3s ease forwards; /* Animação para sumir sozinho */
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
